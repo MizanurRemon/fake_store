@@ -24,18 +24,22 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   buildBody(BuildContext context) {
-    return Stack(
+    return Column(
       children: [
-        Positioned(
-          child: Container(
-            height: screenWidth,
-            //width: screenHeight,
-            decoration: BoxDecoration(
-              color: Colors.red,
-              shape: BoxShape.circle,
-              //border: Border.all(width: 1, color: Colors.red),
+        Stack(
+          children: <Widget>[
+            Positioned(
+              child: Container(
+                height: screenWidth,
+                //width: screenHeight,
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                  shape: BoxShape.circle,
+                  //border: Border.all(width: 1, color: Colors.red),
+                ),
+              ),
             ),
-          ),
+          ],
         )
       ],
     );
