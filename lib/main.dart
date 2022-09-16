@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,6 +19,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      /*theme: Theme.of(context).copyWith(
+        appBarTheme: Theme.of(context)
+            .appBarTheme
+            .copyWith(brightness: Brightness.dark),
+      ),*/
       debugShowCheckedModeBanner: false,
       home: const MyHomePage(),
     );
@@ -34,8 +40,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SplashPage(),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(statusBarColor: Colors.blueGrey, statusBarBrightness: Brightness.dark),
+      child: Scaffold(
+        body: SafeArea(
+          child: SplashPage(),
+        ),
+      ),
     );
   }
 }
