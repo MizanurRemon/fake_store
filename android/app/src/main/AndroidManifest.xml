@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.fake_store">
    <application
-        android:label="fake_store"
+        android:label="Pocket Exam"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
