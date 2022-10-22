@@ -1,5 +1,5 @@
-import 'dart:ffi';
-
+import 'package:fake_store/Utils/Transaction/MyTransaction.dart';
+import 'package:fake_store/screen/root_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: value*2, left: value, right: value),
+            padding: EdgeInsets.only(top: value * 2, left: value, right: value),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -109,7 +109,10 @@ class _LoginPageState extends State<LoginPage> {
                 Container(
                   width: screenWidth,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      //showNewDialog(context);
+                      MyTransaction(context: context).push(RootPage());
+                    },
                     style: ButtonStyle(
                       foregroundColor:
                           MaterialStateProperty.all<Color>(Colors.white),
@@ -131,6 +134,8 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
+
 }
 
 /*Column(

@@ -40,7 +40,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion<SystemUiOverlayStyle>(
+    return const AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(statusBarColor: Colors.blueGrey, statusBarBrightness: Brightness.dark),
       child: Scaffold(
         body: SafeArea(
@@ -48,5 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+
   }
+
+
 }
