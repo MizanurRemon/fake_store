@@ -1,11 +1,10 @@
 import 'dart:async';
 
 import 'package:fake_store/screen/root_page.dart';
-import 'package:fake_store/utils/alert/toast_alert.dart';
-import 'package:fake_store/utils/const/font_size.dart';
 import 'package:flutter/material.dart';
 import 'package:fake_store/sessions/session_manager.dart';
 
+import '../Utils/const/font_size.dart';
 import 'login_page.dart';
 
 class SplashPage extends StatefulWidget {
