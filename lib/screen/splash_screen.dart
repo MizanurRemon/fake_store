@@ -44,7 +44,8 @@ class _SplashPageState extends State<SplashPage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const LoginPage(),
+          //builder: (context) => const LoginPage(),
+          builder: (context) => const RootPage(),
         ),
       );
     }

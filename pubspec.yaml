@@ -40,6 +40,9 @@ dependencies:
   shared_preferences: ^2.0.15
   fluttertoast: ^8.0.9
   google_fonts: ^3.0.1
+  dio: ^4.0.6
+  ellipsis_overflow_text: ^1.0.1+1
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:
