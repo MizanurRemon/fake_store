@@ -1,6 +1,9 @@
 import 'package:fake_store/Model/Product_response.dart';
 import 'package:fake_store/Utils/API/ApiServices.dart';
+import 'package:fake_store/Utils/Transaction/MyTransaction.dart';
+import 'package:fake_store/Utils/alert/toast_alert.dart';
 import 'package:fake_store/Utils/const/font_size.dart';
+import 'package:fake_store/screen/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,7 +24,7 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   void initState() {
     // TODO: implement initState
-    pageTitle = "Home";
+    pageTitle = "Fake Store";
     super.initState();
 
     // ApiServices().getProducts();
@@ -47,29 +50,30 @@ class _DashboardPageState extends State<DashboardPage> {
                 snapshot.data as List<ProductResponse>;
 
             return GridView.builder(
-              physics: ScrollPhysics(),
+              physics: const ScrollPhysics(),
               shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
               ),
               itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  child: Container(
-                    padding: EdgeInsets.all(value),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 100,
-                          child: Image.network(
-                            products[index].image.toString(),
-                            scale: .5,
+                return InkWell(
+                  child: Card(
+                    child: Container(
+                      padding: EdgeInsets.all(value),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 100,
+                            child: Image.network(
+                              products[index].image.toString(),
+                              scale: .5,
+                            ),
                           ),
-                        ),
-                        Divider(
-                          color: Colors.transparent,
-                        ),
-                        /*RatingBar.builder(
+                          Divider(
+                            color: Colors.transparent,
+                          ),
+                          /*RatingBar.builder(
                           initialRating: double.parse(products[index].rating!.rate.toString()),
                           direction: Axis.horizontal,
                           allowHalfRating: true,
@@ -85,24 +89,32 @@ class _DashboardPageState extends State<DashboardPage> {
                             print(rating);
                           },
                         ),*/
-                        Text(
-                          products[index].title.toString(),
-                          maxLines: 1,
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(
-                          height: value/2,
-                        ),
-                        Row(
-                          children: [
-                            Text("Price: ${products[index].price.toString()}"),
-                            const Spacer(),
-                            Text("Rating: ${products[index].rating!.rate.toString()}"),
-                          ],
-                        )
-                      ],
+                          Text(
+                            products[index].title.toString(),
+                            maxLines: 1,
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                            height: value / 2,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                  "Price: ${products[index].price.toString()}"),
+                              const Spacer(),
+                              Text(
+                                  "Rating: ${products[index].rating!.rate.toString()}"),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
+                  onTap: () {
+                    //ToastAlert().successToast(products[index].id.toString());
+                    MyTransaction(context: context).push(
+                        ProductDetailsPage(products[index].id.toString()));
+                  },
                 );
               },
               itemCount: products.length,

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:fake_store/Model/Product_details_response.dart';
 import 'package:fake_store/Model/Product_response.dart';
 
 import '../URL/Urls.dart';
@@ -17,6 +18,19 @@ class ApiServices {
       return jsonResponse.map((data) => ProductResponse.fromJson(data)).toList();
       //final List<dynamic> data = response.data;
       //return data.map((dynamic e) => ProductResponse.fromJson(e)).toList();
+    } else {
+      throw Exception('Failed to load from API');
+    }
+  }
+
+  Future<ProductDetailsResponse> getProductDetails(String id) async {
+    final response = await dio.get("${Urls().BASE_URL}${Urls().PRODUCTS}/${id}");
+
+    if (response.statusCode == 200) {
+
+      print("products:: " + response.data.toString());
+
+      return ProductDetailsResponse.fromJson(response.data);
     } else {
       throw Exception('Failed to load from API');
     }
